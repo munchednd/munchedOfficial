@@ -16,12 +16,12 @@ body {
 
 #About_P {
   font-size: 60px;
-  font-family: "Kalam";
+  font-family: "Kalam", "sans-serif";
 }
 
 #About_Text {
   font-size: 35px;
-  font-family: "Kalam"
+  font-family: "Kalam", "sans-serif";
 }
 
 #About_ID {
@@ -31,5 +31,5 @@ body {
 }
 
 h1 {
-  font-family: "Dekko";
+  font-family: "Dekko", "sans-serif";
 }
