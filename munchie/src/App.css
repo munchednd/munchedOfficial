@@ -1,46 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Kalam|Dekko');
-
 body {
   background: url(bg.svg) #39403D no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-h1 {
-  font-family: 'Dekko', cursive;
-}
-
-#our_jumbo {
-  opacity: 0.65;
-  margin-bottom: 600px;
-}
-
-#About_P {
-  font-size: 60px;
-  font-family: 'Kalam', cursive;
-}
-
-#About_Text {
-  font-size: 35px;
-  font-family: 'Kalam', cursive;
-}
-
-#About_ID {
-  margin-left: 7%;
-  margin-right: 7%;
-  width: 90%;
-}
-
-#h1 {
-  font-style: bold;
-  font-family: 'Dekko', cursive;
-  font-size: 60px;
-}
-
-#hText {
-  font-size: 20px;
 }
 
 
