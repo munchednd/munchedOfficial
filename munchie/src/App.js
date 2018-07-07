@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import { auth } from './rebase'
+import { auth, googleProvider } from './rebase'
 // import logo from './logo.svg';
 import './App.css';
 
@@ -12,6 +12,8 @@ class App extends Component {
   state = {
     uid: null
   }
+
+  
 
   componentWillMount() {
     const uid = localStorage.getItem('uid')
@@ -34,6 +36,7 @@ class App extends Component {
 
   handleAuth = (user) => {
     this.setState({ uid: user.uid })
+    alert(`Hello, ${user.displayName}`)
     localStorage.setItem('uid', user.uid)
   }
 
@@ -42,12 +45,17 @@ class App extends Component {
     localStorage.removeItem('uid')
   }
 
-  signOout = () => {
+  signOut = () => {
     auth.signOut()
   }
 
   signedIn = () => {
+    alert(this.state.uid)
     return this.state.uid
+  }
+
+  authenticate = (provider) => {
+    auth.signInWithPopup(provider)
   }
 
   render() {
@@ -59,6 +67,12 @@ class App extends Component {
         <body>
           <Navvy />
           <Mainbody />
+          <button
+            className="google"
+            onClick={() => this.authenticate(googleProvider)}
+          >
+            click here
+          </button>
         </body>
       </html>
     );
