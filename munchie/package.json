@@ -2,10 +2,15 @@
   "name": "munchie",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://rkarim0598.github.io/munched/munchie/",
   "dependencies": {
     "bootstrap": "^4.1.1",
+    "firebaseui": "^3.1.1",
+    "gh-pages": "^1.2.0",
+    "re-base": "^3.2.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "reactstrap": "^6.2.0"
   },
@@ -13,6 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
