@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { auth, googleProvider } from './rebase'
+
 import {
     Navbar,
     NavbarBrand,
@@ -20,10 +22,54 @@ export default class Navvy extends Component {
 
         this.toggle = this.toggle.bind(this)
         this.state = {
+            uid: null,
             isOpen: false
         }
     }
 
+    componentWillMount() {
+        const uid = localStorage.getItem('uid')
+
+        if (uid) {
+            this.setState({ uid })
+        }
+
+        auth.onAuthStateChanged(
+            (user) => {
+                if (user) {
+                    this.handleAuth(user)
+                }
+                else {
+                    this.handleUnauth()
+                }
+            }
+        )
+    }
+
+    handleAuth = (user) => {
+        this.setState({ uid: user.uid })
+        alert(`Hello, ${user.displayName}`)
+        localStorage.setItem('uid', user.uid)
+    }
+
+    handleUnauth = () => {
+        this.setState({ uid: null })
+        localStorage.removeItem('uid')
+    }
+
+    signOut = () => {
+        auth.signOut()
+        alert(`bye ${this.state.uid}`)
+    }
+
+    signedIn = () => {
+        alert(this.state.uid)
+        return this.state.uid
+    }
+
+    authenticate = (provider) => {
+        auth.signInWithRedirect(provider)
+    }
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
@@ -42,7 +88,7 @@ export default class Navvy extends Component {
                                 <NavLink href="/order/">Order Now</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink /*href="https://github.com/reactstrap/reactstrap"*/>Login/Create Account</NavLink>
+                                <NavLink onClick={() => this.authenticate(googleProvider)}>Login/Create Account</NavLink>
                             </NavItem>
                             {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
