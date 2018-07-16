@@ -7,14 +7,13 @@ import './App.css';
 
 import Navvy from './Navvy'
 import Mainbody from './Mainbody'
-import { callbackify } from 'util';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      uid: null,
-      logged: 0
+      user: null,
+      logged: 'nope'
     }
 
     this.functions.handleAuth = this.functions.handleAuth.bind(this)
@@ -24,33 +23,10 @@ class App extends Component {
     this.functions.authenticate = this.functions.authenticate.bind(this)
   }
 
-
-
-  // componentDidUpdate() {
-  //   // const uid = localStorage.getItem('uid')
-
-  //   // if (uid) {
-  //   //   this.setState({ uid })
-  //   // }
-
-    // auth.onAuthStateChanged(
-    //   (user) => {
-    //     if (user) {
-    //       this.functions.handleAuth(user)
-    //       console.log('handled auth')
-    //       return
-    //     }
-    //     else {
-    //       this.functions.handleUnauth()
-    //       return
-    //     }
-    //   }
-    // )
-  // }
-
   functions = {
     handleAuth(user) {
-      this.setState({ uid: user.uid })
+      this.setState({ user: user })
+      this.setState({ logged: 'yep' })
       // alert(`Hello, ${user.displayName}`)
       localStorage.removeItem('uid')
       localStorage.setItem('uid', user.uid)
@@ -59,7 +35,9 @@ class App extends Component {
     },
 
     handleUnauth() {
-      this.setState({ uid: null })
+      auth.signOut()
+      console.log('handled')
+      this.setState({ user: null, logged: 'nope' })
       localStorage.removeItem('uid')
     },
 
@@ -69,13 +47,12 @@ class App extends Component {
     },
 
     signedIn() {
-      alert(this.state.uid)
       return this.state.uid
     },
 
     authenticate(provider) {
       var that = this
-      const result = auth.signInWithPopup(provider).then( (result) => 
+      auth.signInWithPopup(provider).then( (result) => 
         auth.onAuthStateChanged(
           (user) => {
             if (user) {
@@ -104,7 +81,7 @@ class App extends Component {
           <title>munched</title>
         </head>
         <body>
-          <Navvy functions={this.functions} />
+          <Navvy functions={this.functions} key={this.state.logged} user={this.state.user}/>
           <Mainbody />
         </body>
       </html>

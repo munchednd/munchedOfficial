@@ -8,10 +8,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
     Collapse
 } from 'reactstrap'
 
@@ -21,7 +17,8 @@ export default class Navvy extends Component {
 
         this.toggle = this.toggle.bind(this)
         this.state = {
-            isOpen: false
+            isOpen: false,
+            logText: this.props.user ? `Hello, ${this.props.user.displayName}` : 'Login'
         }
     }
 
@@ -33,7 +30,7 @@ export default class Navvy extends Component {
 
     render() {
         return (
-            
+
             <div>
                 <Navbar color="light" light fixed="top" expand="md">
                     <NavbarBrand href="/">munched</NavbarBrand>
@@ -46,8 +43,15 @@ export default class Navvy extends Component {
                             <NavItem>
                                 <NavLink onClick={() => {
                                     this.props.functions.authenticate(googleProvider)
-                                }}>Login/Create Account</NavLink>
+                                }}>{this.state.logText}</NavLink>
                             </NavItem>
+                            {this.props.user &&
+                                <NavItem>
+                                    <NavLink onClick={() => {
+                                        this.props.functions.handleUnauth() }} >
+                                        Logout
+                                </NavLink>
+                                </NavItem>}
                         </Nav>
                     </Collapse>
                 </Navbar>
