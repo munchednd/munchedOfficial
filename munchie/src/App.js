@@ -8,6 +8,7 @@ import './App.css';
 import Navvy from './Navvy'
 import Mainbody from './Mainbody'
 import Location from './Location'
+import Order from './Order'
 
 class App extends Component {
   constructor(props) {
@@ -83,7 +84,8 @@ class App extends Component {
         <body>
           <Navvy functions={this.functions} key={this.state.logged} user={this.state.user}/>
           {/* <Mainbody /> */}
-          <Location/>
+          {/* <Location/> */}
+          <Order />
         </body>
       </html>
     );
