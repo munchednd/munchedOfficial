@@ -1,3 +1,5 @@
+@import url("fonts.css");
+
 body {
     background: url(bg.svg) #39403D no-repeat center center fixed;
     -webkit-background-size: cover;

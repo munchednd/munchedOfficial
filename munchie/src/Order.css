@@ -1,0 +1,17 @@
+body {
+  background: url(bg.svg) #39403D no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#accordion {
+   margin-right: 10%;
+   opacity: 0.9;
+   margin-left: 10%;
+}
+
+#Wrapper {
+    width: 100%;
+}

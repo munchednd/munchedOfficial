@@ -1,40 +1,40 @@
 @import url("fonts.css");
 
 #our_jumbo {
-    opacity: 0.65;
-    margin-bottom: 600px;
-  }
+  opacity: 0.65;
+  margin-bottom: 600px;
+}
   
-  #About_P {
-    font-size: 60px;
-    font-family: 'Kalam', cursive;
-  }
+ #About_P {
+  font-size: 60px;
+  font-family: 'Kalam', cursive;
+}
   
-  #About_Text {
-    font-size: 35px;
-    font-family: 'Kalam', cursive;
-  }
+#About_Text {
+  font-size: 35px;
+  font-family: 'Kalam', cursive;
+}
 
-  h1 {
-    font-family: 'Dekko', cursive;
-  }
+h1 {
+  font-family: 'Dekko', cursive;
+}
   
-  #About_ID {
-    margin-left: 7%;
-    margin-right: 7%;
-    width: 90%;
-  }
+#About_ID {
+  margin-left: 7%;
+  margin-right: 7%;
+  width: 90%;
+}
   
-  #h1 {
-    font-style: bold;
-    font-family: 'Dekko', cursive;
-    font-size: 60px;
-  }
+#h1 {
+  font-style: bold;
+  font-family: 'Dekko', cursive;
+  font-size: 60px;
+}
   
-  #hText {
-    font-size: 20px;
-  }
+#hText {
+  font-size: 20px;
+}
 
-  #btn {
-    color: 'white';
-  }
+#btn {
+  color: 'white';
+}
