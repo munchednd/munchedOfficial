@@ -7,6 +7,7 @@ import './App.css';
 
 import Navvy from './Navvy'
 import Mainbody from './Mainbody'
+import Location from './Location'
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,6 @@ class App extends Component {
     handleAuth(user) {
       this.setState({ user: user })
       this.setState({ logged: 'yep' })
-      // alert(`Hello, ${user.displayName}`)
       localStorage.removeItem('uid')
       localStorage.setItem('uid', user.uid)
       console.log(localStorage.uid)
@@ -82,7 +82,8 @@ class App extends Component {
         </head>
         <body>
           <Navvy functions={this.functions} key={this.state.logged} user={this.state.user}/>
-          <Mainbody />
+          {/* <Mainbody /> */}
+          <Location/>
         </body>
       </html>
     );
