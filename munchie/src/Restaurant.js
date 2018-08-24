@@ -1,179 +1,59 @@
 import React, { Component } from 'react'
 
-import './Order.css'
+import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap'
+import './Restaurant.css'
 
-class Order extends Component {
+class Restaurant extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            restaurants: [
+                {
+                    store: 'Subway',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Subway_restaurant.svg'
+                },
+                {
+                    store: 'Smash Burger',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/9/9c/SmashBurger_logo.jpg'
+                },
+                {
+                    store: 'Taco Hut',
+                    image: 'https://signnn.com/wp-content/uploads/2017/01/Taco-Bell-Pizza-Hut-Logo.png'
+                },
+                {
+                    store: 'Hagerty',
+                    image: 'hagerty'
+                },
+                {
+                    store: 'Star Ginger',
+                    image: 'star'
+                },
+                {
+                    store: 'Modernn Market',
+                    image: 'modern'
+                }
+            ]
+        }
+    }
+
     render() {
+        const restList = this.state.restaurants.map(rest => (
+                <button className="btn-circle">{rest.store}</button>
+        ))
+
         return (
-            <div id="Wrapper">
-                <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingOne">
-                            <h2 className="panel-title">
-                                <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#Subway" aria-expanded="false" aria-controls="collapseOne">
-                                    Subway
-                                </a>
-                            </h2>
-                        </div>
-                        <div id="Subway" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div className="panel-body">
-                                <div className="row">
-                                    <div className="col-sm-6 col-md-2">
-                                        <h4> Type of Sandwich </h4>
-                                        <form action="/action_page.php" method="get">
-                                            <input type="radio" name="sandwich" value="forest" id="forest" /> Black Forest Ham<br />
-                                            <input type="radio" name="sandwich" value="chicken_bacon" id="chicken_bacon" /> Chick and Bacon Ranch Melt<br />
-                                            <input type="radio" name="sandwich" value="cold_cut" id="cold_cut" /> Cold Cut Combo<br />
-                                            <input type="radio" name="sandwich" value="bmt" id="bmt" /> Italian B.M.T.<br />
-                                            <input type="radio" name="sandwich" value="meatball" id="meatball" /> Meatball Marinara<br />
-                                            <input type="radio" name="sandwich" value="roasted_c" id="roasted_c" /> Over Roasted Chicken<br />
-                                            <input type="radio" name="sandwich" value="roast_beef" id="roast_beef" /> Roast Beef<br />
-                                            <input type="radio" name="sandwich" value="rotisserie" id="rotisserie" /> Rotisserie-Style Chicken<br />
-                                            <input type="radio" name="sandwich" value="spicy" id="spicy" /> Spicy Italian<br />
-                                            <input type="radio" name="sandwich" value="steak" id="steak" /> Steak and Cheese<br />
-                                            <input type="radio" name="sandwich" value="subway" id="subway" /> Subway Club<br />
-                                            <input type="radio" name="sandwich" value="sweet" id="sweet" /> Sweet Onion Chicken Teriyaki<br />
-                                            <input type="radio" name="sandwich" value="tuna" id="tuna" /> classNameic Tuna<br />
-                                            <input type="radio" name="sandwich" value="turkey" id="turkey" /> Turkey Breast<br />
-                                            <input type="radio" name="sandwich" value="veggie" id="veggie" /> Veggie Delite<br /><br />
-                                        </form>
-                                    </div>
-                                    <div className="col-sm-6 col-md-2">
-                                        <h4> Bread </h4>
-                                        <form action="/action_page.php" method="get">
-                                            <input type="radio" name="bread" value="Italian" id="Italian" /> Italian<br />
-                                            <input type="radio" name="bread" value="9-Grain" id="9-Grain" /> 9-Grain Wheat<br />
-                                            <input type="radio" name="bread" value="Herbs" id="Herbs" /> Italian Herbs and Cheese<br />
-                                            <input type="radio" name="bread" value="Flatbread" id="Flatbread" /> Flatbread<br />
-                                            <input type="radio" name="bread" value="Monterey_Bread" id="Monterey_Bread" /> Monterey Cheddar<br />
-                                            <input type="radio" name="bread" value="Multi" id="Multi" /> Multi-Grain Flatbread<br /><br />
-                                        </form>
-                                        <form action="/action_page.php" method="get">
-                                            <input type="radio" name="toast" value="not_toasted" id="not_toasted" /> Not Toasted<br />
-                                            <input type="radio" name="toast" value="toasted" id="toasted" /> Toasted<br /><br />
-                                        </form>
-                                    </div>
-                                    <div className="col-sm-6 col-md-2">
-                                        <h4> Cheese </h4>
-                                        <form action="/action_page.php" method="get">
-                                            <input type="checkbox" name="cheese" value="no_cheese" id="no_cheese" /> No Cheese<br />
-                                            <input type="checkbox" name="cheese" value="cheddar" id="cheddar" /> Cheddar<br />
-                                            <input type="checkbox" name="cheese" value="Monterey_Cheese" id="Monterey_Cheese" /> Monterey Cheddar<br />
-                                            <input type="checkbox" name="cheese" value="Pepper_Jack" id="Pepper_Jack" /> Pepper Jack<br />
-                                            <input type="checkbox" name="cheese" value="Provolone" id="Provolone" /> Provolone<br />
-                                            <input type="checkbox" name="cheese" value="Shredded_Mozzarella" id="Shredded_Mozzarella" /> Shredded Mozzarella<br />
-                                            <input type="checkbox" name="cheese" value="American" id="American" /> American<br /><br />
-                                        </form>
-                                    </div>
-                                    <div className="col-sm-6 col-md-2">
-                                        <h4> Extras </h4>
-                                        <form action="/action_page.php" method="get">
-                                            <input type="checkbox" name="extras" value="deluxe" id="deluxe" /> Deluxe<br />
-                                            <input type="checkbox" name="extras" value="extra_cheese" id="extra_cheese" /> Extra Cheese<br />
-                                            <input type="checkbox" name="extras" value="bacon" id="bacon" /> Bacon<br />
-                                            <input type="checkbox" name="extras" value="pepperoni" id="pepperoni" /> Pepperoni<br />
-                                            <input type="checkbox" name="extras" value="guac" id="guac" /> Guacamole<br />
-                                            <input type="checkbox" name="extras" value="double" id="double" /> Double Meat<br /><br />
-                                        </form>
-                                    </div>
-                                    <div className="col-sm-6 col-md-2">
-                                        <h4> Veggies </h4>
-                                        <form action="/action_page.php" method="get">
-                                            <input type="checkbox" name="veggies" value="lettuce" id="lettuce" /> Lettuce<br />
-                                            <input type="checkbox" name="veggies" value="spinach" id="spinach" /> Spinach<br />
-                                            <input type="checkbox" name="veggies" value="tomatoes" id="tomatoes" /> Tomatoes<br />
-                                            <input type="checkbox" name="veggies" value="cucumbers" id="cucumbers" /> Cucumbers<br />
-                                            <input type="checkbox" name="veggies" value="pickles" id="pickles" /> Pickles<br />
-                                            <input type="checkbox" name="veggies" value="green" id="green" /> Green Peppers<br />
-                                            <input type="checkbox" name="veggies" value="black" id="black" /> Black Olives<br />
-                                            <input type="checkbox" name="veggies" value="red" id="red" /> Red Onions<br />
-                                            <input type="checkbox" name="veggies" value="jalepenos" id="jalepenos" /> Jalepe&ntilde;os<br />
-                                            <input type="checkbox" name="veggies" value="banana" id="banana" /> Banana Peppers<br /><br />
-                                        </form>
-                                    </div>
-                                    <div className="col-sm-6 col-md-2">
-                                        <h4> Condiments </h4>
-                                        <form action="/action_page.php" method="get">
-                                            <input type="checkbox" name="condiments" value="mayo" id="mayo" /> Mayonnaise<br />
-                                            <input type="checkbox" name="condiments" value="light" id="light" /> Light Mayonnaise<br />
-                                            <input type="checkbox" name="condiments" value="yellow" id="yellow" /> Yellow Mustard<br />
-                                            <input type="checkbox" name="condiments" value="honey" id="honey" /> Honey Mustard<br />
-                                            <input type="checkbox" name="condiments" value="dell" id="dell" /> Dell Brown Mustard<br />
-                                            <input type="checkbox" name="condiments" value="chipotle" id="chipotle" /> Chipotle Southwest<br />
-                                            <input type="checkbox" name="condiments" value="sweet_onion" id="sweet_onion" /> Sweet Onion<br />
-                                            <input type="checkbox" name="condiments" value="ranch" id="ranch" /> Ranch<br />
-                                            <input type="checkbox" name="condiments" value="oil" id="oil" /> Oil<br />
-                                            <input type="checkbox" name="condiments" value="wine" id="wine" /> Red Wine Vinegar<br />
-                                            <input type="checkbox" name="condiments" value="sriracha" id="sriracha" /> Creamy Sriracha<br />
-                                            <input type="checkbox" name="condiments" value="vinegarette" id="vinegarette" /> Vinegarette<br />
-                                            <input type="checkbox" name="condiments" value="caesar" id="caesar" /> Caesar<br />
-                                            <input type="checkbox" name="condiments" value="thousand" id="thousand" /> Thousand Island Dressing<br />
-                                            <input type="checkbox" name="condiments" value="cranberry" id="cranberry" /> Cranberry Mustard Sauce<br />
-                                            <input type="checkbox" name="condiments" value="salt" id="salt" /> Salt<br />
-                                            <input type="checkbox" name="condiments" value="pepper" id="pepper" /> Pepper<br />
-                                            <input type="checkbox" name="condiments" value="oregano" id="oregano" /> Oregano<br />
-                                            <input type="checkbox" name="condiments" value="grated" id="grated" /> Grated<br /><br />
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingTwo">
-                            <h4 className="panel-title">
-                                <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#SmashBurger" aria-expanded="false" aria-controls="collapseTwo">
-                                    Smash Burger
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="SmashBurger" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div className="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingThree">
-                            <h4 className="panel-title">
-                                <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#TacoBell" aria-expanded="false" aria-controls="collapseThree">
-                                    Taco Bell/Pizza Hut
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="TacoBell" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div className="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="panel panel-default">
-                        <div className="panel-heading" role="tab" id="headingFour">
-                            <h4 className="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#Hagerty" aria-expanded="false" aria-controls="collapseFour">
-                                    Hagerty Family Cafe
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="Hagerty" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                            <div className="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="flex-container">
+                <button>yo</button>
             </div>
+            // <ButtonGroup vertical>
+            //     {restList}
+            // </ButtonGroup>
         )
     }
 }
 
-export default Order
+export default Restaurant
 {/*
                     <div className="panel panel-default">
                         <div className="panel-heading" role="tab" id="headingFive">
